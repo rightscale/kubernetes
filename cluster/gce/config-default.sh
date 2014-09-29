@@ -20,7 +20,7 @@ MASTER_SIZE=g1-small
 MINION_SIZE=g1-small
 NUM_MINIONS=4
 # gcloud/gcutil will expand this to the latest supported image.
-IMAGE=backports-debian-7-wheezy
+IMAGE=debian-7-wheezy
 NETWORK=default
 INSTANCE_PREFIX=kubernetes
 MASTER_NAME="${INSTANCE_PREFIX}-master"
