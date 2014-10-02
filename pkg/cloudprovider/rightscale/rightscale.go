@@ -18,6 +18,7 @@ package rightscale_cloud
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -52,6 +53,12 @@ func newRightScaleCloud(config io.Reader) (*RightScaleCloud, error) {
 	var cloud RightScaleCloud
 	if err := gcfg.ReadInto(&cloud, config); err != nil {
 		return nil, err
+	}
+	if cloud.Rll.Secret == "" {
+		return nil, errors.New("missing 'Secret' configuration setting")
+	}
+	if cloud.Rll.Port == "" {
+		return nil, errors.New("missing 'Port' configuration setting")
 	}
 
 	return &cloud, nil
